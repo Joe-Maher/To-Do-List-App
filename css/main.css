@@ -1,0 +1,293 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.3s all ease;
+    margin: 0;
+    padding: 0
+}
+
+body {
+    background-image: url(../images/bg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+body .loader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    transition: 0.4s visibility ease-in-out, 0.4s opacity ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100
+}
+/* Loader */
+body .loader::before {
+    content: "";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 10px #CCC,
+                -1px -1px 10px #CCC;
+    background-color: #000;
+    animation: loader 1s linear infinite
+}
+
+body .loader::after {
+    content: "Loading..";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #FFF;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #000;
+    animation: loaderText 1s ease-in-out infinite reverse
+}
+
+body .loader-hidden {
+    visibility: hidden;
+    opacity: 0
+}
+
+/* fill div background */
+
+body .fill {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.4;
+    z-index: -1
+}
+
+.container {
+    max-width: 100%;
+    padding: 10px
+}
+
+.container header {
+    display: flex;
+    align-items: center
+}
+
+.container header a {
+    background-color:#641C74;
+    padding: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #FFF
+}
+
+.container header a.about {
+    order: -1
+}
+
+.container h2 {
+    width: fit-content;
+    margin: 20px auto;
+    font-size: 40px;
+    color:#FFF
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    background-color: #EEE;
+    padding: 15px;
+    width: 800px;
+    margin: 30px auto;
+    border-radius: 20px;
+    flex-direction: column
+}
+
+form input[name='task'] {
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 35px;
+    outline: none;
+    color: #641C74;
+    caret-color: #caa0d4
+}
+
+form input[name='save'],
+.del-all{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 30px;
+    background-color: #641C74;
+    color: #FFF;
+    cursor: pointer
+}
+
+.del-all {
+    text-align: center;
+    padding: 10px;
+    font-size: 15px;
+    align-self: center;
+    background-color: rgb(242, 71, 105);
+    cursor: pointer
+}
+
+div.tasks {
+    background-color: #EEE;
+    margin: auto;
+    width: 800px;
+    padding: 10px;
+    min-height: 40px;
+    min-width: 800px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 530px;
+    overflow-y: auto
+}
+
+div.tasks::-webkit-scrollbar {
+    width: 20px;
+}
+
+div.tasks::-webkit-scrollbar-thumb {
+    background-color:#641c7470;
+    border-radius: 50px;
+}
+
+div.tasks::-webkit-scrollbar-thumb:hover {
+    background-color:#641c74d2;
+    border-radius: 10px
+}
+
+div.tasks::-webkit-scrollbar-track {
+    background-color:rgb(242, 71, 105, 0.2);
+    border-radius: 20px;
+    box-shadow: inset 1px 1px 1px #CCC;
+}
+
+div.tasks .task {
+    flex-basis: 100%;
+    background-color: #FFF;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.2s ease;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.3s all ease
+}
+
+div.tasks .task:hover {
+    background-color: #9b76a4;
+    color: #FFF;
+    transform: rotateX(5deg) translateY(-2px)
+}
+
+div.tasks .task:active {
+    background-color: #FFF;
+    color: #000
+}
+
+div.tasks .task::selection {
+    background-color: #641C74;
+    color: #FFF
+}
+
+div.tasks .task span {
+    display: block;
+    padding: 5px;
+    background-color:rgb(242, 71, 105);
+    color: #FFF;
+    text-align: center;
+    border-radius: 5px;
+    text-transform: capitalize;
+    cursor: pointer
+}
+
+div.tasks .done {
+    background-color: #9b76a4;
+    color: #FFF;
+    opacity: 0.6
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    z-index: -1
+}
+
+footer p {
+    color: #FFF;
+    opacity: 0.7
+}
+
+/* animations */
+
+@keyframes loader {
+    0%{
+        transform: rotate(0turn);
+        box-shadow: 1px 1px 1px 1px #F00,
+        -1px -1px 1px 1px #0F0
+    }
+
+    25% {
+        transform: rotate(0.25turn);
+        box-shadow: 1px 1px 2px 1px #F00,
+        -1px -1px 2px 1px #0F0
+    }
+
+    50% {
+        transform: rotate(0.5turn);
+        box-shadow: 1px 1px 2px 1px #F00,
+        -1px -1px 2px 1px #00F
+    }
+
+    75% {
+        transform: rotate(0.75turn);
+        box-shadow: 1px 1px 2px 1px #FF0,
+        -1px -1px 2px 1px #F00
+    }
+
+    100% {
+        transform: rotate(1turn);
+        box-shadow: 1px 1px 2px 1px #F00,
+        -1px -1px 2px 1px rgb(255, 145, 0)
+    }
+}
+
+/* animation for text loader */
+
+@keyframes loaderText {
+    from {
+        color: #000;
+        opacity: 0.8;
+    }
+
+    to {
+        color: #FFF;
+        opacity: 1;
+    }
+}

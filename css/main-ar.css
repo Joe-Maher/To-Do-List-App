@@ -1,0 +1,8 @@
+body {
+    direction: rtl
+}
+
+body .loader::after {
+    content: "جار التحميل..";
+
+}
